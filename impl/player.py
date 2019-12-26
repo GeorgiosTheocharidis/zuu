@@ -228,7 +228,10 @@ class Player(metaclass=PlayerMeta):
         
         :raises CommandCannotBeExecuted.
         """
-        direction = self._DIRECTIONS[direction]
+        try:
+            direction = self._DIRECTIONS[direction]
+        except KeyError:
+            raise CommandCannotBeExecuted
         new_room = self._room.get_neighbor(direction)
         if new_room:
             self._room = new_room
