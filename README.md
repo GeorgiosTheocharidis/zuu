@@ -189,7 +189,7 @@ game you can use the UserCommand decorator similarly to the following:
             :param str param: Some param.
             """
             return str(param)
-
+    
             
 Doing so will make the new command available to the game and it will be 
 printed when the used asks for help and be executed when the user calls it.        
