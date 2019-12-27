@@ -177,11 +177,12 @@ an example you can use the mentoring.py program.):
 method to reflect the logic of your game.
  
 * If you have the need for a custom "command" that is only applicable to your
-game you can use the UserCommand decorator similarly to the following: 
-
+game you can use the UserCommand decorator similarly to the following:
+ 
 
     class MyPlayer(Player):
         """Specializes the Player."""
+        
         @UserCommand
         def do_something(self, param):
             """Does something.
@@ -193,5 +194,3 @@ game you can use the UserCommand decorator similarly to the following:
             
 Doing so will make the new command available to the game and it will be 
 printed when the used asks for help and be executed when the user calls it.        
-
-     
