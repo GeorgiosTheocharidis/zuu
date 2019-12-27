@@ -25,6 +25,7 @@ class UserCommand:
         :param callable function: The member method to decorate.
         """
         self._function = function
+        self.__doc__ = function.__doc__.split('\n')[0]
 
     def __call__(self, the_instance, *args, **kwargs):
         """Allows for callable like behaviour.
@@ -225,6 +226,8 @@ class Player(metaclass=PlayerMeta):
     @UserCommand
     def move(self, direction):
         """Moves to a direction.
+
+        :param str direction: The direction to move (can be up-down-left-right).
         
         :raises CommandCannotBeExecuted.
         """
@@ -251,8 +254,11 @@ class Player(metaclass=PlayerMeta):
     @UserCommand
     def ls(self):
         """lists the available commands."""
-        command_names = list(self._commands.keys())
-        return 'Available commands: {}'.format(' '.join(command_names))
+        msgs = ['Available commands']
+        for key, value in self._commands.items():
+            msgs.append('{:20}: {}'.format(key, value.__doc__))
+        return '\n\n'.join(msgs)
+
 
     @UserCommand
     def where(self):
