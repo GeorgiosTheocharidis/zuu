@@ -180,9 +180,9 @@ method to reflect the logic of your game.
 game you can use the UserCommand decorator similarly to the following: 
 
 
+
     class MyPlayer(Player):
-    
-    
+        
         @UserCommand
         def do_something(self, param):
             """Does something.
