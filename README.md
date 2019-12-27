@@ -167,3 +167,30 @@ the application exits:
 
 To better understand how to play you can use either the dummygame or the
 mentoring programs.
+
+#### Creating a new type of a game 
+
+The following are the required steps to create a new type of a game (as 
+an example you can use the mentoring.py program.):
+
+* Create your player class deriving from Player and implement the **have_won**
+method to reflect the logic of your game.
+ 
+* If you have the need for a custom "command" that is only applicable to your
+game you can use the UserCommand decorator similarly to the following: 
+
+
+    class MyPlayer(Player):
+        # ...
+        @UserCommand
+        def do_something(self, param):
+            """Does something.
+            
+            :param str param: Some param.
+            """
+            return str(param)
+            
+Doing so will make the new command available to the game and it will be 
+printed when the used asks for help and be executed when the user calls it.        
+
+     
